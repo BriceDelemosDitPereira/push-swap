@@ -28,8 +28,8 @@ The following instructions can be used to sort the stack:
 
 ## Example
 
-```
-Init a and b:
+```bash
+Init -> a and b:
 2
 1
 3
@@ -39,7 +39,7 @@ Init a and b:
 = =
 a b
 ---------------------------------------
-Exec sa:
+Exec -> sa:
 1
 2
 3
@@ -49,28 +49,28 @@ Exec sa:
 = =
 a b
 ---------------------------------------
-Exec pb pb pb:
+Exec -> pb pb pb:
 6 3
 8 2
 5 1
 = =
 a b
 ---------------------------------------
-Exec rb:
+Exec -> rb:
 6 2
 8 1
 5 3
 = =
 a b
 ---------------------------------------
-Exec rra and rrb (equivalent to rrr):
+Exec -> rra and rrb (equivalent to rrr):
 5 3
 6 2
 8 1
 = =
 a b
 ---------------------------------------
-Exec pa pa pa:
+Exec -> pa pa pa:
 1
 2
 3
@@ -81,7 +81,30 @@ Exec pa pa pa:
 a b
 ```
 
-## push-swap
+
+## Use this code
+
+This code can be used with and without an executable :
+
+```
+Create on executable :
+for push-swap -> go build -o push-swap cmd/push-swap/main.go
+for checker -> go build -o checker cmd/checker/main.go
+```
+
+In these examples, the name of our executable will be respectively push-swap and checker.
+
+
+To run the code, launch the main.go of push-swap (or the executable) followed by a series of numbers (in string format) separated by spaces.
+
+```
+Example:
+go run cmd/push-swap/main.go "3 1 2"
+./push-swap "3 1 2"
+```
+
+
+## Push-swap
 
 - This program receives the stack a as input, formatted as a list of integers (top element first).
 - It displays the smallest list of instructions required to sort the stack a, with the smallest number at the top.
@@ -90,9 +113,9 @@ a b
 - If no arguments are provided, it does not display anything (0 instructions).
 
 
-### Usage Example
+### Usage example
 
-```
+```bash
 $ ./push-swap "2 1 3 6 5 8"
 pb
 pb
@@ -108,7 +131,7 @@ $
 ```
 
 
-## checker
+## Checker
 
 - This program receives the stack a as input, formatted as a list of integers (top element first).
 - It reads instructions from the standard input, each followed by a newline character, and executes them on the stack.
@@ -117,9 +140,9 @@ $
 - If no arguments are provided, it does not display anything.
 
 
-### Usage Example
+### Usage example
 
-```
+```bash
 $ ./checker "3 2 1 0"
 sa
 rra
@@ -140,66 +163,9 @@ $
 ```
 
 
-## Contributing
+## Push-swap and checker
 
-Contributions to Push-Swap are welcome! If you have any ideas for improvements or bug fixes, feel free to open an issue or submit a pull request.
-
-
-## Co-developers
-
-- [Delestre Thomas](https://github.com/Thomas-Delestre)
-- [Marchais Mickael](https://github.com/Jeancrock)
-
-
-
-*********************************************************************
-# Push-Swap
-
-## Introduction
-
-Push-Swap is a tool for sorting a series of numbers in ascending order using various commands. Each command is printed to indicate how many commands are needed to sort the numbers in ascending order and which command is used.
-
-This code also includes a checker that verifies if the executed commands correctly sort the numbers and if the result is accurate. It also checks if a series of commands can sort an example series of numbers.
-
-It is possible to run this code without creating an executable, but it increases the number of elements to input in the terminal:
-
-```
-Example:
-with an executable -> ./push-swap "3 1 2"
-without an executable -> go run cmd/push-swap/main.go "3 1 2"
-```
-
-## Creating an Executable
-
-To create an executable (as they are not in the repository), simply enter the following command in the terminal:
-
-```
-Example:
-for push-swap -> go build -o push-swap cmd/push-swap/main.go
-for checker -> go build -o checker cmd/checker/main.go
-```
-
-In these examples, the name of our executable will be respectively push-swap and checker.
-
-## Usage
-
-To run the code, launch the main.go of push-swap (or the executable) followed by a series of numbers (in string format) separated by spaces.
-
-```
-Example:
-go run cmd/push-swap/main.go "3 1 2"
-./push-swap "3 1 2"
-```
-
-There are 2 possibilities to run the checker:
-
-1. Provide it with commands and numbers:
-
-```bash
-echo -e "pb\nra\npb\nra\nsa\nra\npa\npa\n" | ./checker "0 9 1 8 2"
-```
-
-2. Run push-swap at the same time:
+Push-swap and checker can be used at the same time.
 
 ```bash
 ./push-swap "0 9 1 8 2" | ./checker "0 9 1 8 2"
@@ -213,4 +179,8 @@ ARG=("4 67 3 87 23"); ./push-swap "$ARG" | ./checker "$ARG"
 
 This will use the values stored in the `ARG` variable for both push-swap and checker commands.
 
-Feel free to reach out if you have any further questions or need additional assistance!
+
+## Co-developers
+
+- [Delestre Thomas](https://github.com/Thomas-Delestre)
+- [Marchais Mickael](https://github.com/Jeancrock)
