@@ -148,4 +148,69 @@ Contributions to Push-Swap are welcome! If you have any ideas for improvements o
 ## Co-developers
 
 - [Delestre Thomas](https://github.com/Thomas-Delestre)
-- Marchais Mickael
+- [Marchais Mickael](https://github.com/Jeancrock)
+
+
+
+*********************************************************************
+# Push-Swap
+
+## Introduction
+
+Push-Swap is a tool for sorting a series of numbers in ascending order using various commands. Each command is printed to indicate how many commands are needed to sort the numbers in ascending order and which command is used.
+
+This code also includes a checker that verifies if the executed commands correctly sort the numbers and if the result is accurate. It also checks if a series of commands can sort an example series of numbers.
+
+It is possible to run this code without creating an executable, but it increases the number of elements to input in the terminal:
+
+```
+Example:
+with an executable -> ./push-swap "3 1 2"
+without an executable -> go run cmd/push-swap/main.go "3 1 2"
+```
+
+## Creating an Executable
+
+To create an executable (as they are not in the repository), simply enter the following command in the terminal:
+
+```
+Example:
+for push-swap -> go build -o push-swap cmd/push-swap/main.go
+for checker -> go build -o checker cmd/checker/main.go
+```
+
+In these examples, the name of our executable will be respectively push-swap and checker.
+
+## Usage
+
+To run the code, launch the main.go of push-swap (or the executable) followed by a series of numbers (in string format) separated by spaces.
+
+```
+Example:
+go run cmd/push-swap/main.go "3 1 2"
+./push-swap "3 1 2"
+```
+
+There are 2 possibilities to run the checker:
+
+1. Provide it with commands and numbers:
+
+```bash
+echo -e "pb\nra\npb\nra\nsa\nra\npa\npa\n" | ./checker "0 9 1 8 2"
+```
+
+2. Run push-swap at the same time:
+
+```bash
+./push-swap "0 9 1 8 2" | ./checker "0 9 1 8 2"
+```
+
+You can set a variable in the terminal to avoid rewriting the numbers:
+
+```bash
+ARG=("4 67 3 87 23"); ./push-swap "$ARG" | ./checker "$ARG"
+```
+
+This will use the values stored in the `ARG` variable for both push-swap and checker commands.
+
+Feel free to reach out if you have any further questions or need additional assistance!
